@@ -8,7 +8,6 @@ import (
 	"time"
 )
 
-var initialCheck = false
 var buffer string
 
 //Initial run of the program
