@@ -15,19 +15,20 @@ func init() {
 	call, err := makeAPICall() //Call to API
 	handleError(err)
 	fmt.Printf("The price for a single bitcoin is: %s per USD", call)
-	insertNewLine()
+	fmt.Println("")
 	buffer = call
 }
 
 func main() {
-	time.Sleep(time.Minute) //Wait one minute
-	fmt.Println("One minute elapsed")
+	time.Sleep(time.Minute)    //Wait one minute
 	call, err := makeAPICall() //Call the API
 	handleError(err)
 	if buffer != call {
-		insertNewLine()
 		fmt.Printf("The price for a single bitcoin is: %s per USD", call)
-		insertNewLine()
+		fmt.Println("")
+	} else {
+		fmt.Println("The price for a single bitcoin hasn't changed in the last minute")
+		fmt.Println("")
 	}
 	buffer = call //Asing the buffer to the call
 	main()
@@ -51,7 +52,4 @@ func handleError(err error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-}
-func insertNewLine() {
-	fmt.Println("")
 }
